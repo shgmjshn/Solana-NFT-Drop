@@ -1,4 +1,5 @@
 // index.tsx
+import CandyMachine from "@/components/CandyMachine";
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -79,9 +80,10 @@ useEffect (() => {
           <div>
             <p className={styles.header}>🍭 Candy Drop</p>
             <p className={styles.subText}>NFT drop machine with fair mint</p>
-            {/*ウォレットアドレスを持っていない場合にのみ表示する条件を追加する*/}
             { !walletAddress && renderNotConnectedConteiner()}
           </div>
+          {/* ウォレットアドレスがステートに保存されていたら、Candymachinecomponentに渡す*/}
+          {walletAddress && <CandyMachine walletAddress={window.solana}/>}
           <div className={styles.footerContainer}>
             <Image
               alt="Twitter Logo"
